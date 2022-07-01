@@ -6,6 +6,8 @@ A command line application to handle templating your READMEs.
 Define a template directory and write a README template for your
 project then compile it into a proper README.
 
+This project is hosted on https://code.eutychia.org/kay/readme-manager.
+
 ## Installation
 ```bash
 $ deno install --name readme-manager --reload --allow-all https://deno.land/x/readme_manager/mod.ts
@@ -75,3 +77,12 @@ If you are going to be using this for many repositories you might want tot setup
 The templating engine use is https://deno.land/x/eta@v1.12.3.
 
 More information about it can be found on their documentation.
+
+## Issues
+New issues can be submitted by mailing [eutychia.gitlab+kay-readme-manager-67-issue-@gmail.com](mailto:eutychia.gitlab+kay-readme-manager-67-issue-@gmail.com)
+
+Once an issue is open and approved you are able to submit pull requests via email also if desired.
+
+
+---
+made with k by love
