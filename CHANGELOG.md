@@ -1,3 +1,10 @@
+# [1.2.0](https://code.eutychia.org/kay/readme-manager/compare/v1.1.0...v1.2.0) (2022-07-01)
+
+
+### Features
+
+* Add templates and match flags ([db76359](https://code.eutychia.org/kay/readme-manager/commit/db76359703c0c33f1007c4a74e33c885fced44b7))
+
 # [1.1.0](https://code.eutychia.org/kay/readme-manager/compare/v1.0.0...v1.1.0) (2022-07-01)
 
 
