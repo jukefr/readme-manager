@@ -1,10 +1,6 @@
 import { getLogger } from "https://deno.land/std@0.146.0/log/mod.ts";
 import { Args, parse } from "https://deno.land/std@0.146.0/flags/mod.ts";
-import {
-  join,
-  relative,
-  resolve,
-} from "https://deno.land/std@0.146.0/path/mod.ts";
+import { join, resolve } from "https://deno.land/std@0.146.0/path/mod.ts";
 
 import {
   checkExists,
@@ -16,9 +12,9 @@ import { setup } from "./setup.ts";
 import { help } from "./help.ts";
 import { error, setupLogs } from "./log.ts";
 import { bootstrap } from "./bootstrap.ts";
+import { render } from "./render.ts";
 
 const appName = "readme-manager";
-const __dirname = new URL(".", import.meta.url).pathname;
 
 export const mod = async (args: Args) => {
   const appLogFile = getAppLogFile(appName);
@@ -119,10 +115,6 @@ export const mod = async (args: Args) => {
   if (args._.length === 0) targetPath = Deno.cwd();
   targetPath = `${targetPath}`; // cast to string
 
-  const { default: render } = await import(
-    relative(__dirname, resolve(join(templates, "mod.ts")))
-  );
-
   for await (const file of Deno.readDir(targetPath)) {
     if (file.isFile && file.name === match) {
       console.log(`Matched ${file.name}.`);
@@ -131,6 +123,7 @@ export const mod = async (args: Args) => {
           resolve(join(targetPath, file.name)),
           resolve(targetPath),
           await Deno.readTextFile(resolve(join(targetPath, file.name))),
+          templates,
         );
         await Deno.writeTextFile(
           resolve(join(targetPath, "README.md")),

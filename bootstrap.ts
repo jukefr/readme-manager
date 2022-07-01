@@ -4,37 +4,20 @@ import { join, resolve } from "https://deno.land/std@0.146.0/path/mod.ts";
 import { checkExists } from "./utils.ts";
 
 // this is fugly but eh...
-export const mod = `
-import { basename } from "https://deno.land/std@0.146.0/path/mod.ts";
-import * as Eta from "https://deno.land/x/eta@v1.12.3/mod.ts";
+export const readme = `<%~ include("HEADER.template.md", {...it}) %>
 
-const __dirname = new URL(".", import.meta.url).pathname;
+<% it.javascripted = 13 + 12 %>
 
-export default (
-  readmeFilePath: string,
-  readmeDirectoryPath: string,
-  readmeTemplate: string,
-): string | Promise<string> | void => {
-  const template = \`<%~ includeFile("HEADER.template.md", {...it}) %>
+<%= it.javascripted %>
 
-\${readmeTemplate}\`.replaceAll('includeFile("', \`includeFile("\${__dirname}\`);
-  try {
-    return Eta.render(
-      template,
-      {
-        name: basename(readmeDirectoryPath),
-      },
-    );
-  } catch (e) {
-    console.error(e);
-    Deno.exit(1);
-  }
-};
-`;
+<%= it.readme %>
+
+<%~ include("FOOTER.template.md", {...it}) %>`;
 
 export const header = `# <%= it.name %>
 
 hello world
+---
 `;
 
 export const footer = `---
@@ -66,12 +49,12 @@ export const bootstrap = async (
       e,
     );
   }
-  const modPath = resolve(join(templateDirectory, "mod.ts"));
+  const readmePath = resolve(join(templateDirectory, "README.template.md"));
   try {
-    await Deno.writeTextFile(modPath, mod);
+    await Deno.writeTextFile(readmePath, readme);
   } catch (e) {
     error(
-      `Something went wrong trying to boostrap ${modPath}.`,
+      `Something went wrong trying to boostrap ${readmePath}.`,
       e,
     );
   }
@@ -95,15 +78,4 @@ export const bootstrap = async (
   }
   console.log(`Template bootstrapping done in ${templateDirectory}.`);
   console.log("Feel free to edit anything to your liking.");
-  console.log();
-  console.log(
-    "Caching modules once. You may need to recache if you add new imports.",
-  );
-  console.log(`deno cache ${templateDirectory}/mod.ts`);
-  const cacheProcess = Deno.run({
-    cmd: ["deno", "cache", resolve(join(templateDirectory, "mod.ts"))],
-  });
-  await cacheProcess.status();
-  cacheProcess.close();
-  console.log("All done!");
 };
