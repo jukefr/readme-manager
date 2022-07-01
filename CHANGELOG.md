@@ -1,3 +1,15 @@
+# [2.0.0](https://code.eutychia.org/kay/readme-manager/compare/v1.4.2...v2.0.0) (2022-07-01)
+
+
+### Features
+
+* Make templates dir not a deno module ([421817d](https://code.eutychia.org/kay/readme-manager/commit/421817d77b48985afcae00d5dddb22be86cb218a))
+
+
+### BREAKING CHANGES
+
+* no more mod.ts it doesnt work when distributed
+
 ## [1.4.2](https://code.eutychia.org/kay/readme-manager/compare/v1.4.1...v1.4.2) (2022-07-01)
 
 
