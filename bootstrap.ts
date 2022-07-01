@@ -95,4 +95,15 @@ export const bootstrap = async (
   }
   console.log(`Template bootstrapping done in ${templateDirectory}.`);
   console.log("Feel free to edit anything to your liking.");
+  console.log();
+  console.log(
+    "Caching modules once. You may need to recache if you add new imports.",
+  );
+  console.log(`deno cache ${templateDirectory}/mod.ts`);
+  const cacheProcess = Deno.run({
+    cmd: ["deno", "cache", resolve(join(templateDirectory, "mod.ts"))],
+  });
+  await cacheProcess.status();
+  cacheProcess.close();
+  console.log("All done!");
 };
