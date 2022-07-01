@@ -1,3 +1,10 @@
+# [1.3.0](https://code.eutychia.org/kay/readme-manager/compare/v1.2.0...v1.3.0) (2022-07-01)
+
+
+### Features
+
+* Proper docs ([f46ab00](https://code.eutychia.org/kay/readme-manager/commit/f46ab00d592fa4ad998ca21f3e63c75f482114fc))
+
 # [1.2.0](https://code.eutychia.org/kay/readme-manager/compare/v1.1.0...v1.2.0) (2022-07-01)
 
 
