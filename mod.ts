@@ -110,7 +110,6 @@ export const mod = async (args: Args) => {
     }
   }
 
-  // get path
   let targetPath = args?._?.[0];
   if (args._.length === 0) targetPath = Deno.cwd();
   targetPath = `${targetPath}`; // cast to string
@@ -124,13 +123,22 @@ export const mod = async (args: Args) => {
           resolve(targetPath),
           await Deno.readTextFile(resolve(join(targetPath, file.name))),
           templates,
+          errorHandler,
         );
-        await Deno.writeTextFile(
-          resolve(join(targetPath, "README.md")),
-          readme,
-        );
+        if (readme) {
+          await Deno.writeTextFile(
+            resolve(join(targetPath, "README.md")),
+            readme,
+          );
+        } else {
+          errorHandler(
+            `Something went wrong, ${
+              resolve(join(targetPath, file.name))
+            } generated an empty render output.`,
+          );
+        }
       } catch (e) {
-        error(
+        errorHandler(
           `Something went wrong rendering ${
             resolve(
               join(targetPath, "README.md"),

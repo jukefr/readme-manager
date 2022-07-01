@@ -14,7 +14,8 @@ export const render = async (
   readmeDirectoryPath: string,
   readmeTemplate: string,
   templatesPath: string,
-): Promise<string> => {
+  error: (message: string, error?: Error) => void,
+): Promise<string | void> => {
   for await (const template of Deno.readDir(templatesPath)) {
     if (template.isFile && template.name.endsWith(".template.md")) {
       templates.define(
@@ -36,7 +37,6 @@ export const render = async (
       },
     ) as Promise<string>;
   } catch (e) {
-    console.error(e);
-    Deno.exit(1);
+    error(`Something went wrong rendering the README ${readmeFilePath}`, e);
   }
 };
