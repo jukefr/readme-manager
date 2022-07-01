@@ -43,26 +43,13 @@ export const mod = async (args: Args) => {
     return bootstrap(appConfigDirectory, errorHandler);
   }
 
-  logger.debug("Checking configuration file.");
-  let appConfigFileContent;
-  if (!await checkExists(appConfigFile, errorHandler)) {
-    appConfigFileContent = await setup(
-      appName,
-      appConfigFile,
-      logger,
-      errorHandler,
-      appConfigDirectory,
-    );
-  }
+  let templates = args?.templates;
+  let match = args?.match;
 
-  if (!appConfigFileContent) {
-    try {
-      appConfigFileContent = await Deno.readTextFile(appConfigFile);
-    } catch (e) {
-      errorHandler(`Something went wrong reading ${appConfigFile}.`, e);
-    }
-
-    if (!appConfigFileContent) {
+  if (!args.match || !args.templates) {
+    logger.debug("Checking configuration file.");
+    let appConfigFileContent;
+    if (!(await checkExists(appConfigFile, errorHandler))) {
       appConfigFileContent = await setup(
         appName,
         appConfigFile,
@@ -72,63 +59,87 @@ export const mod = async (args: Args) => {
       );
     }
 
-    try {
-      appConfigFileContent = JSON.parse(appConfigFileContent);
-    } catch (e) {
-      errorHandler(
-        `Something went wrong parsing the json in ${appConfigFile}.`,
-        e,
-      );
-    }
+    if (!appConfigFileContent) {
+      try {
+        appConfigFileContent = await Deno.readTextFile(appConfigFile);
+      } catch (e) {
+        errorHandler(`Something went wrong reading ${appConfigFile}.`, e);
+      }
 
-    if (
-      !appConfigFileContent ||
-      typeof appConfigFileContent !== "object" ||
-      Object.keys(appConfigFileContent).length === 0
-    ) {
-      appConfigFileContent = JSON.parse(
-        await setup(
+      if (!appConfigFileContent) {
+        appConfigFileContent = await setup(
           appName,
           appConfigFile,
           logger,
           errorHandler,
           appConfigDirectory,
-        ),
-      );
-    }
-
-    // get path
-    let targetPath = args?._?.[0];
-    if (args._.length === 0) targetPath = Deno.cwd();
-    targetPath = `${targetPath}`; // cast to string
-
-    const { default: render } = await import(
-      resolve(join(appConfigFileContent.templates, "mod.ts"))
-    );
-
-    for await (const file of Deno.readDir(targetPath)) {
-      if (file.isFile && file.name === appConfigFileContent.match) {
-        console.log(`Matched ${file.name}.`);
-        try {
-          const readme = await render(
-            resolve(join(targetPath, file.name)),
-            resolve(targetPath),
-            await Deno.readTextFile(resolve(join(targetPath, file.name))),
-          );
-          await Deno.writeTextFile(
-            resolve(join(targetPath, "README.md")),
-            readme,
-          );
-        } catch (e) {
-          error(
-            `Something went wrong rendering ${
-              resolve(join(targetPath, "README.md"))
-            }`,
-            e,
-          );
-        }
-        console.log(`Generated ${join(targetPath, "README.md")}.`);
+        );
       }
+
+      try {
+        appConfigFileContent = JSON.parse(appConfigFileContent);
+      } catch (e) {
+        errorHandler(
+          `Something went wrong parsing the json in ${appConfigFile}.`,
+          e,
+        );
+      }
+
+      if (
+        !appConfigFileContent ||
+        typeof appConfigFileContent !== "object" ||
+        Object.keys(appConfigFileContent).length === 0
+      ) {
+        appConfigFileContent = JSON.parse(
+          await setup(
+            appName,
+            appConfigFile,
+            logger,
+            errorHandler,
+            appConfigDirectory,
+          ),
+        );
+      }
+
+      match = appConfigFileContent.match;
+      if (args.match) match = args.match;
+
+      templates = appConfigFileContent.templates;
+      if (args.templates) templates = appConfigFileContent.templates;
+    }
+  }
+
+  // get path
+  let targetPath = args?._?.[0];
+  if (args._.length === 0) targetPath = Deno.cwd();
+  targetPath = `${targetPath}`; // cast to string
+
+  const { default: render } = await import(resolve(join(templates, "mod.ts")));
+
+  for await (const file of Deno.readDir(targetPath)) {
+    if (file.isFile && file.name === match) {
+      console.log(`Matched ${file.name}.`);
+      try {
+        const readme = await render(
+          resolve(join(targetPath, file.name)),
+          resolve(targetPath),
+          await Deno.readTextFile(resolve(join(targetPath, file.name))),
+        );
+        await Deno.writeTextFile(
+          resolve(join(targetPath, "README.md")),
+          readme,
+        );
+      } catch (e) {
+        error(
+          `Something went wrong rendering ${
+            resolve(
+              join(targetPath, "README.md"),
+            )
+          }`,
+          e,
+        );
+      }
+      console.log(`Generated ${join(targetPath, "README.md")}.`);
     }
   }
 };
