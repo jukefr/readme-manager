@@ -1,3 +1,10 @@
+## [2.0.1](https://code.eutychia.org/kay/readme-manager/compare/v2.0.0...v2.0.1) (2022-07-01)
+
+
+### Bug Fixes
+
+* Docs ([ad2f7a1](https://code.eutychia.org/kay/readme-manager/commit/ad2f7a127a3716e0da767c5e2663780d873478d1))
+
 # [2.0.0](https://code.eutychia.org/kay/readme-manager/compare/v1.4.2...v2.0.0) (2022-07-01)
 
 
