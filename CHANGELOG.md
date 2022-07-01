@@ -1,3 +1,10 @@
+# [2.1.0](https://code.eutychia.org/kay/readme-manager/compare/v2.0.2...v2.1.0) (2022-07-01)
+
+
+### Features
+
+* Git variables and better variable docs ([e131d38](https://code.eutychia.org/kay/readme-manager/commit/e131d38bc34f858908e11897e0a7891846ee2fc8))
+
 ## [2.0.2](https://code.eutychia.org/kay/readme-manager/compare/v2.0.1...v2.0.2) (2022-07-01)
 
 
