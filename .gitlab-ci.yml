@@ -1,0 +1,8 @@
+---
+include:
+  - project: "kay/ci-templates"
+    file:
+      - "/Semantic-Release.gitlab-ci.yml"
+
+stages:
+  - review
