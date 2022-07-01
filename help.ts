@@ -1,8 +1,25 @@
 export const help = () => {
-  console.log("Usage:");
-  console.log("\t readme-manager \t\t Run the manager.");
-  console.log("\t readme-manager --bootstrap \t Create templates.");
-  console.log("\t readme-manager --debug \t Enables debugging mode.");
-  console.log("\t readme-manager --help \t\t Shows this help page.");
+  console.log(
+    "readme-manager \t\t\t\t\t\t\t\t Run the manager in current directory.",
+  );
+  console.log(
+    "readme-manager [project_path] \t\t\t\t\t\t Run the manager in directory.",
+  );
+  console.log(
+    "readme-manager [project_path] --templates [path] \t\t\t Template path override.",
+  );
+  console.log(
+    "readme-manager [project_path] --match [name] \t\t\t\t Match name override.",
+  );
+  console.log(
+    "readme-manager [project_path] --templates [path] --match [name] \t Templates path and match name override.",
+  );
+
+  console.log("readme-manager --bootstrap \t\t\t\t\t\t Create templates.");
+  console.log("readme-manager --setup \t\t\t\t\t\t\t Create configuration.");
+  console.log("readme-manager --help \t\t\t\t\t\t\t Shows this help page.");
+  console.log(
+    "readme-manager [...] --debug \t\t\t\t\t\t Enables debugging mode on any command.",
+  );
   Deno.exit(0);
 };

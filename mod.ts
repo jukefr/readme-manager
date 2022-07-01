@@ -11,6 +11,7 @@ import {
 import { setup } from "./setup.ts";
 import { help } from "./help.ts";
 import { error, setupLogs } from "./log.ts";
+import { bootstrap } from "./bootstrap.ts";
 
 const appName = "readme-manager";
 
@@ -36,6 +37,10 @@ export const mod = async (args: Args) => {
       errorHandler,
       appConfigDirectory,
     );
+  }
+
+  if (args.bootstrap) {
+    return bootstrap(appConfigDirectory, errorHandler);
   }
 
   logger.debug("Checking configuration file.");

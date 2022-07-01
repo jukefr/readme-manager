@@ -1,5 +1,7 @@
-import { ensureDir } from "https://deno.land/std@0.146.0/fs/mod.ts";
+import { ensureDir, move } from "https://deno.land/std@0.146.0/fs/mod.ts";
 import { join, resolve } from "https://deno.land/std@0.146.0/path/mod.ts";
+
+import { checkExists } from "./utils.ts";
 
 // this is fugly but eh...
 export const mod = `
@@ -43,6 +45,19 @@ export const bootstrap = async (
   templateDirectory: string,
   error: (message: string, error?: Error) => void,
 ) => {
+  if (await checkExists(templateDirectory, error)) {
+    console.log(
+      "You ran bootstrap mode with present templates, backing up.",
+    );
+    try {
+      await move(templateDirectory, `${templateDirectory}.old`, {
+        overwrite: true,
+      });
+    } catch (e) {
+      error("Something went wrong backing up your templates.", e);
+    }
+  }
+
   try {
     await ensureDir(templateDirectory);
   } catch (e) {

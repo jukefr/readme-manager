@@ -34,13 +34,11 @@ export const setup = async (
     appConfigDirectory,
   ) as string;
 
-  // check if it exists
   if (!await checkExists(templateDirectory, error)) {
     await bootstrap(templateDirectory, error);
   }
-  // if it exsists use it
-  // if it doesnt exist create it and bootstrap template files
 
+  console.log();
   const filenameMatch = prompt(
     "What readme template filename are we looking for inside repositories?",
     ".README.template.md",
