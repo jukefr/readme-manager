@@ -2,6 +2,31 @@ import { error } from "https://deno.land/std@0.146.0/log/mod.ts";
 import { join, resolve } from "https://deno.land/std@0.146.0/path/mod.ts";
 import configDir from "https://deno.land/x/config_dir@v0.1.1/mod.ts";
 
+export const runCommand = async (
+  command: string[],
+  error: (message: string, error?: Error) => void,
+) => {
+  const process = Deno.run({
+    cmd: command,
+    stdout: "piped",
+    stderr: "piped",
+  });
+
+  const output = await process.output(); // "piped" must be set
+  const outStr = new TextDecoder().decode(output);
+
+  const err = await process.stderrOutput();
+  const errStr = new TextDecoder().decode(err);
+
+  process.close();
+
+  if (errStr) {
+    error(`Something went wrong running the command ${command}`);
+  }
+
+  return outStr;
+};
+
 export const getUserConfigDirectory = (
   error: (message: string, error?: Error) => void,
 ) => {
