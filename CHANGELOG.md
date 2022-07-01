@@ -1,3 +1,10 @@
+# [1.4.0](https://code.eutychia.org/kay/readme-manager/compare/v1.3.1...v1.4.0) (2022-07-01)
+
+
+### Features
+
+* Add template module auto cache on boostrap and docs ([e6815eb](https://code.eutychia.org/kay/readme-manager/commit/e6815eb1ee8315e5eb45d5621ca13cd3aa757d1e))
+
 ## [1.3.1](https://code.eutychia.org/kay/readme-manager/compare/v1.3.0...v1.3.1) (2022-07-01)
 
 
