@@ -1,3 +1,10 @@
+## [2.0.2](https://code.eutychia.org/kay/readme-manager/compare/v2.0.1...v2.0.2) (2022-07-01)
+
+
+### Bug Fixes
+
+* Error handling in render ([9c0c8b0](https://code.eutychia.org/kay/readme-manager/commit/9c0c8b0f47e19a6d606733fdeefe6521508bede2))
+
 ## [2.0.1](https://code.eutychia.org/kay/readme-manager/compare/v2.0.0...v2.0.1) (2022-07-01)
 
 
