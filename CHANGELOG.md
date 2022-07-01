@@ -1,3 +1,10 @@
+# [1.1.0](https://code.eutychia.org/kay/readme-manager/compare/v1.0.0...v1.1.0) (2022-07-01)
+
+
+### Features
+
+* Help and bootstrap toggle ([006dc91](https://code.eutychia.org/kay/readme-manager/commit/006dc9179b9fcd49fb6db2b166543f498936561d))
+
 # 1.0.0 (2022-07-01)
 
 
