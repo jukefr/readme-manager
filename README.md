@@ -1,4 +1,6 @@
 # readme-manager
+hello world
+
 A command line application to handle templating your READMEs.
 
 Define a template directory and write a README template for your
@@ -69,11 +71,7 @@ $ deno cache $TEMPLATE_DIR/mod.ts
 ## Suggestion
 If you are going to be using this for many repositories you might want tot setup a git template folder and add a precommit hook that runs the `readme-manager`.
 
-## Template engine
-The templating engine used is https://deno.land/x/eta@v1.12.3.
+## Templating
+The templating engine use is https://deno.land/x/eta@v1.12.3.
 
 More information about it can be found on their documentation.
-
-
----
-made with love by k
