@@ -1,3 +1,10 @@
+## [1.4.2](https://code.eutychia.org/kay/readme-manager/compare/v1.4.1...v1.4.2) (2022-07-01)
+
+
+### Bug Fixes
+
+* Try relative imports since it wants to make it a url idk ([d7b8895](https://code.eutychia.org/kay/readme-manager/commit/d7b88955b9b75eb9fc8e0a323f30dec819f0001f))
+
 ## [1.4.1](https://code.eutychia.org/kay/readme-manager/compare/v1.4.0...v1.4.1) (2022-07-01)
 
 
