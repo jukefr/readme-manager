@@ -6,7 +6,7 @@ project then compile it into a proper README.
 
 ## Installation
 ```bash
-$ deno install --name readme-manager --reload --allow-all https://deno.land/x/readme-manager/mod.ts
+$ deno install --name readme-manager --reload --allow-all https://deno.land/x/readme_manager/mod.ts
 ```
 
 ## Usage
@@ -55,6 +55,9 @@ There is also a debug flag available that can be added to any command :
 $ readme-manager [...] --debug
 # Will print more information to console and save all logs to the log file (instead of only errors by default)
 ```
+
+## Suggestion
+If you are going to be using this for many repositories you might want tot setup a git template folder and add a precommit hook that runs the `readme-manager`.
 
 ## Templating
 The templating engine use is https://deno.land/x/eta@v1.12.3.
