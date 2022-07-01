@@ -57,17 +57,6 @@ There is also a debug flag available that can be added to any command :
 $ readme-manager [...] --debug
 # Will print more information to console and save all logs to the log file (instead of only errors by default)
 ```
-
-## Template directory
-The template directory is simply local a deno module.
-
-Because of this, you might have to cache the deno packages used inside your template directory.
-They are cached for you once automatically when you run the bootstrap process but if you add new imports you may need to do it manually.
-```bash
-$ deno cache $TEMPLATE_DIR/mod.ts
-# Run this every time you add a new import to your module in the template directory.
-```
-
 ## Suggestion
 If you are going to be using this for many repositories you might want tot setup a git template folder and add a precommit hook that runs the `readme-manager`.
 
