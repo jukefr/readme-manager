@@ -1,3 +1,10 @@
+## [1.4.1](https://code.eutychia.org/kay/readme-manager/compare/v1.4.0...v1.4.1) (2022-07-01)
+
+
+### Bug Fixes
+
+* woopsies this is going to happen often lol ([54d6836](https://code.eutychia.org/kay/readme-manager/commit/54d683627474edf7179753d98db2436271b9b157))
+
 # [1.4.0](https://code.eutychia.org/kay/readme-manager/compare/v1.3.1...v1.4.0) (2022-07-01)
 
 
