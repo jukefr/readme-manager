@@ -1,3 +1,10 @@
+# [2.2.0](https://code.eutychia.org/kay/readme-manager/compare/v2.1.3...v2.2.0) (2022-07-02)
+
+
+### Features
+
+* Better async docs and bootstrap demo ([c76b9ce](https://code.eutychia.org/kay/readme-manager/commit/c76b9ce622f52407744eae3a0ceb91fc5ea94f9c))
+
 ## [2.1.3](https://code.eutychia.org/kay/readme-manager/compare/v2.1.2...v2.1.3) (2022-07-02)
 
 
