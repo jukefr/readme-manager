@@ -1,3 +1,10 @@
+## [2.1.3](https://code.eutychia.org/kay/readme-manager/compare/v2.1.2...v2.1.3) (2022-07-02)
+
+
+### Bug Fixes
+
+* Fix async rendering ([75ce710](https://code.eutychia.org/kay/readme-manager/commit/75ce710a590141c5a4a83c6d956f8b4b8173c4ab))
+
 ## [2.1.2](https://code.eutychia.org/kay/readme-manager/compare/v2.1.1...v2.1.2) (2022-07-02)
 
 
