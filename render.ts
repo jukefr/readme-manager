@@ -49,6 +49,8 @@ export const render = async (
       },
       {
         async: true,
+        autoEscape: false,
+        autoTrim: false,
       },
     ) as Promise<string>;
   } catch (e) {
