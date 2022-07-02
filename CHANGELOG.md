@@ -1,3 +1,10 @@
+# [2.4.0](https://code.eutychia.org/kay/readme-manager/compare/v2.3.1...v2.4.0) (2022-07-02)
+
+
+### Features
+
+* disable autoescape and autotrim ([aa02fe3](https://code.eutychia.org/kay/readme-manager/commit/aa02fe39094dd494a69b47e6247c18e362b796a0))
+
 ## [2.3.1](https://code.eutychia.org/kay/readme-manager/compare/v2.3.0...v2.3.1) (2022-07-02)
 
 
