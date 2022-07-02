@@ -41,6 +41,11 @@ export const render = async (
         gitTag: (await getTag(readmeDirectoryPath, error)).trim(),
         gitCommit: (await getCommit(readmeDirectoryPath, error)).trim(),
       },
+      {
+        async: true,
+        autoEscape: false,
+        autoTrim: false,
+      },
     ) as Promise<string>;
   } catch (e) {
     error(`Something went wrong rendering the README ${readmeFilePath}`, e);
