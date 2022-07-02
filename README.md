@@ -94,6 +94,17 @@ More information about it can be found on their documentation.
 ## Suggestion
 If you are going to be using this for many repositories you might want tot setup a git template folder and add a precommit hook that runs the `readme-manager`.
 
+Here is what mine looks like:
+```bash
+# ~/.git-templates/hooks/pre-commit
+# git config --global init.templatedir &#39;~/.git-templates&#39;
+# git init 
+
+#!/usr/bin/env bash
+~/.deno/bin/readme-manager
+git add -u
+```
+
 
 ## Development
 
