@@ -5,6 +5,7 @@ import configDir from "https://deno.land/x/config_dir@v0.1.1/mod.ts";
 export const runCommand = async (
   command: string[],
   error: (message: string, error?: Error) => void,
+  allowFail?: boolean,
 ) => {
   const process = Deno.run({
     cmd: command,
@@ -20,7 +21,7 @@ export const runCommand = async (
 
   process.close();
 
-  if (errStr) {
+  if (errStr && !allowFail) {
     error(`Something went wrong running the command ${command}`);
   }
 

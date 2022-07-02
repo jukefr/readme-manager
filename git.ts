@@ -14,6 +14,7 @@ export const getRepository = (
       "remote.origin.url",
     ],
     error,
+    true,
   );
 };
 
@@ -31,6 +32,7 @@ export const getTag = (
       "--abbrev=0",
     ],
     error,
+    true,
   );
 };
 
@@ -48,6 +50,7 @@ export const getBranch = (
       "HEAD",
     ],
     error,
+    true,
   );
 };
 
@@ -64,5 +67,6 @@ export const getCommit = (
       "HEAD",
     ],
     error,
+    true,
   );
 };
