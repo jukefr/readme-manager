@@ -1,3 +1,10 @@
+## [2.1.1](https://code.eutychia.org/kay/readme-manager/compare/v2.1.0...v2.1.1) (2022-07-02)
+
+
+### Bug Fixes
+
+* Add options to render ([a1a5111](https://code.eutychia.org/kay/readme-manager/commit/a1a5111950ece68bda7bc984e092dac7e8b04460))
+
 # [2.1.0](https://code.eutychia.org/kay/readme-manager/compare/v2.0.2...v2.1.0) (2022-07-01)
 
 
