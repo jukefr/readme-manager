@@ -1,10 +1,8 @@
-# readme-manager
-A command line application to handle templating your READMEs.
+# [readme-manager](https://code.eutychia.org/kay/readme-manager)
+helps manage and harmonise READMEs in many repositories with template files available on [deno.land/x/readme_manager](https://deno.land/x/readme_manager)
 
 Define a template directory and write a README template for your
 project then compile it into a proper README.
-
-This project is hosted on https://code.eutychia.org/kay/readme-manager.
 
 ## Installation
 ```bash
@@ -57,6 +55,17 @@ There is also a debug flag available that can be added to any command :
 $ readme-manager [...] --debug
 # Will print more information to console and save all logs to the log file (instead of only errors by default)
 ```
+## Templating
+When you bootstrap the templates forlder, 3 examples files will be create for you :
+- README.template.md: this is the base file that gets used when rendering your readme. You can await stuff in it. **This is the only required file**
+- HEADER.template.md: is an example header you might use
+- FOOTER.template.md: is an example footer you might use
+
+Feel free to adjust, remove or add any files you might want. Simply keep in mind that `README.template.md` is required and will be the base for rendering.
+
+Any file in the templates folder will be automatically required and available by its filename with `include`.
+
+Any file that starts with `.` will be ignored.
 
 ## Template variables
 The following variables are available to the template (on `it`):
@@ -71,6 +80,8 @@ The following variables are available to the template (on `it`):
 
 You can use javascript inside the templates and also async templates for data fetching (see Eta docs)
 
+Awaits are only supported at the top level `README.template.md`.
+
 ## Templating docs
 The templating engine use is https://deno.land/x/eta@v1.12.3.
 
@@ -79,10 +90,21 @@ More information about it can be found on their documentation.
 ## Suggestion
 If you are going to be using this for many repositories you might want tot setup a git template folder and add a precommit hook that runs the `readme-manager`.
 
-## Issues
-New issues can be submitted by mailing [eutychia.gitlab+kay-readme-manager-67-issue-@gmail.com](mailto:eutychia.gitlab+kay-readme-manager-67-issue-@gmail.com)
 
-Once an issue is open and approved you are able to submit pull requests via email also if desired.
+## Development
+
+To clone the repository locally:
+
+```bash
+$ git clone https://code.eutychia.org/kay/readme-manager.git
+```
+
+## Contributing
+
+See [this page](https://code.eutychia.org/kay/contributing/-/blob/main/README.md) for more information on contributing to this project.
+
+### Issues
+Open new issues by mailing [eutychia.gitlab+kay-readme-manager-67-issue-@gmail.com](mailto:eutychia.gitlab+kay-readme-manager-67-issue-@gmail.com)
 
 ---
-made with love by k
+beep boop

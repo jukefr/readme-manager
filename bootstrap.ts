@@ -10,6 +10,10 @@ export const readme = `<%~ include("HEADER.template.md", {...it}) %>
 
 <%= it.javascripted %>
 
+<% it.asyncJavascripted = await fetch("https://jsonplaceholder.typicode.com/todos/1").then(r => r.json()) %>
+
+<%= it.asyncJavascripted.title %>
+
 <%= it.readme %>
 
 <%~ include("FOOTER.template.md", {...it}) %>`;
@@ -29,9 +33,7 @@ export const bootstrap = async (
   error: (message: string, error?: Error) => void,
 ) => {
   if (await checkExists(templateDirectory, error)) {
-    console.log(
-      "You ran bootstrap mode with present templates, backing up.",
-    );
+    console.log("You ran bootstrap mode with present templates, backing up.");
     try {
       await move(templateDirectory, `${templateDirectory}.old`, {
         overwrite: true,
@@ -53,28 +55,19 @@ export const bootstrap = async (
   try {
     await Deno.writeTextFile(readmePath, readme);
   } catch (e) {
-    error(
-      `Something went wrong trying to boostrap ${readmePath}.`,
-      e,
-    );
+    error(`Something went wrong trying to boostrap ${readmePath}.`, e);
   }
   const headerPath = resolve(join(templateDirectory, "HEADER.template.md"));
   try {
     await Deno.writeTextFile(headerPath, header);
   } catch (e) {
-    error(
-      `Something went wrong trying to boostrap ${headerPath}.`,
-      e,
-    );
+    error(`Something went wrong trying to boostrap ${headerPath}.`, e);
   }
   const footerPath = resolve(join(templateDirectory, "FOOTER.template.md"));
   try {
     await Deno.writeTextFile(footerPath, footer);
   } catch (e) {
-    error(
-      `Something went wrong trying to boostrap ${footerPath}.`,
-      e,
-    );
+    error(`Something went wrong trying to boostrap ${footerPath}.`, e);
   }
   console.log(`Template bootstrapping done in ${templateDirectory}.`);
   console.log("Feel free to edit anything to your liking.");

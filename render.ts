@@ -19,7 +19,11 @@ export const render = async (
   error: (message: string, error?: Error) => void,
 ): Promise<string | void> => {
   for await (const template of Deno.readDir(templatesPath)) {
-    if (template.isFile && template.name.endsWith(".template.md")) {
+    if (
+      template.isFile && template.name.endsWith(".template.md") &&
+      !template.name.endsWith("README.template.md") &&
+      !template.name.startsWith(".")
+    ) {
       templates.define(
         template.name,
         compile(
@@ -30,7 +34,9 @@ export const render = async (
   }
   try {
     return renderAsync(
-      '<%~ include("README.template.md", {...it}) %>',
+      await Deno.readTextFile(
+        resolve(join(templatesPath, "README.template.md")),
+      ),
       {
         name: basename(readmeDirectoryPath),
         readmeFilePath,
