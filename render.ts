@@ -5,7 +5,7 @@ import {
 } from "https://deno.land/std@0.146.0/path/mod.ts";
 import {
   compile,
-  render as etaRender,
+  renderAsync,
   templates,
 } from "https://deno.land/x/eta@v1.12.3/mod.ts";
 
@@ -29,7 +29,7 @@ export const render = async (
     }
   }
   try {
-    return etaRender(
+    return renderAsync(
       '<%~ include("README.template.md", {...it}) %>',
       {
         name: basename(readmeDirectoryPath),
@@ -43,8 +43,6 @@ export const render = async (
       },
       {
         async: true,
-        autoEscape: false,
-        autoTrim: false,
       },
     ) as Promise<string>;
   } catch (e) {
