@@ -1,3 +1,15 @@
+# [2.3.0](https://code.eutychia.org/kay/readme-manager/compare/v2.2.1...v2.3.0) (2022-07-02)
+
+
+### Bug Fixes
+
+* Check permissions on readdir ([f786724](https://code.eutychia.org/kay/readme-manager/commit/f7867243545e5b4ea8ab1f6dd596025aafdb2a45))
+
+
+### Features
+
+* add debug log ([607e9af](https://code.eutychia.org/kay/readme-manager/commit/607e9af6ed9b2d5e8761b6f4623d2a4f5c82c85e))
+
 ## [2.2.1](https://code.eutychia.org/kay/readme-manager/compare/v2.2.0...v2.2.1) (2022-07-02)
 
 
