@@ -1,3 +1,10 @@
+## [2.1.2](https://code.eutychia.org/kay/readme-manager/compare/v2.1.1...v2.1.2) (2022-07-02)
+
+
+### Bug Fixes
+
+* Soft fail on git commands fail ([eed24e5](https://code.eutychia.org/kay/readme-manager/commit/eed24e5409f63ca68a1693dd8fc44da450b12244))
+
 ## [2.1.1](https://code.eutychia.org/kay/readme-manager/compare/v2.1.0...v2.1.1) (2022-07-02)
 
 
