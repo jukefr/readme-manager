@@ -1,3 +1,10 @@
+## [2.3.1](https://code.eutychia.org/kay/readme-manager/compare/v2.3.0...v2.3.1) (2022-07-02)
+
+
+### Bug Fixes
+
+* update info about hook in readme ([3eef132](https://code.eutychia.org/kay/readme-manager/commit/3eef132418b0cfd7765ca9c72a095d00a8ece805))
+
 # [2.3.0](https://code.eutychia.org/kay/readme-manager/compare/v2.2.1...v2.3.0) (2022-07-02)
 
 
