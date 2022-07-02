@@ -1,5 +1,8 @@
+
+
 # [readme-manager](https://code.eutychia.org/kay/readme-manager)
 helps manage and harmonise READMEs in many repositories with template files available on [deno.land/x/readme_manager](https://deno.land/x/readme_manager)
+
 
 Define a template directory and write a README template for your
 project then compile it into a proper README.
@@ -97,13 +100,14 @@ If you are going to be using this for many repositories you might want tot setup
 Here is what mine looks like:
 ```bash
 # ~/.git-templates/hooks/pre-commit
-# git config --global init.templatedir &#39;~/.git-templates&#39;
+# git config --global init.templatedir '~/.git-templates'
 # git init 
 
 #!/usr/bin/env bash
 ~/.deno/bin/readme-manager
 git add -u
 ```
+
 
 
 ## Development
@@ -123,3 +127,4 @@ Open new issues by mailing [eutychia.gitlab+kay-readme-manager-67-issue-@gmail.c
 
 ---
 beep boop
+
