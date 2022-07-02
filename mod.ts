@@ -115,6 +115,7 @@ export const mod = async (args: Args) => {
   targetPath = `${targetPath}`; // cast to string
   try {
     for await (const file of Deno.readDir(targetPath)) {
+      logger.debug(`Checking ${file.name} in ${targetPath}`);
       if (file.isFile && file.name === match) {
         console.log(`Matched ${file.name}.`);
         try {
