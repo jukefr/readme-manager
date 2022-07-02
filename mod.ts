@@ -113,41 +113,52 @@ export const mod = async (args: Args) => {
   let targetPath = args?._?.[0];
   if (args._.length === 0) targetPath = Deno.cwd();
   targetPath = `${targetPath}`; // cast to string
-
-  for await (const file of Deno.readDir(targetPath)) {
-    if (file.isFile && file.name === match) {
-      console.log(`Matched ${file.name}.`);
-      try {
-        const readme = await render(
-          resolve(join(targetPath, file.name)),
-          resolve(targetPath),
-          await Deno.readTextFile(resolve(join(targetPath, file.name))),
-          templates,
-          errorHandler,
-        );
-        if (readme) {
-          await Deno.writeTextFile(
-            resolve(join(targetPath, "README.md")),
-            readme,
+  try {
+    for await (const file of Deno.readDir(targetPath)) {
+      if (file.isFile && file.name === match) {
+        console.log(`Matched ${file.name}.`);
+        try {
+          const readme = await render(
+            resolve(join(targetPath, file.name)),
+            resolve(targetPath),
+            await Deno.readTextFile(resolve(join(targetPath, file.name))),
+            templates,
+            errorHandler,
           );
-        } else {
+          if (readme) {
+            await Deno.writeTextFile(
+              resolve(join(targetPath, "README.md")),
+              readme,
+            );
+          } else {
+            errorHandler(
+              `Something went wrong, ${
+                resolve(join(targetPath, file.name))
+              } generated an empty render output.`,
+            );
+          }
+        } catch (e) {
           errorHandler(
-            `Something went wrong, ${
-              resolve(join(targetPath, file.name))
-            } generated an empty render output.`,
+            `Something went wrong rendering ${
+              resolve(
+                join(targetPath, "README.md"),
+              )
+            }`,
+            e,
           );
         }
-      } catch (e) {
-        errorHandler(
-          `Something went wrong rendering ${
-            resolve(
-              join(targetPath, "README.md"),
-            )
-          }`,
-          e,
-        );
+        console.log(`Generated ${join(targetPath, "README.md")}.`);
       }
-      console.log(`Generated ${join(targetPath, "README.md")}.`);
+    }
+  } catch (e) {
+    if (e instanceof Deno.errors.PermissionDenied) {
+      logger.error("PermissionDenied on a directory.");
+      logger.error(e.message);
+    } else {
+      errorHandler(
+        "Something went wrong reading the direcotries of the target path.",
+        e,
+      );
     }
   }
 };
