@@ -55,6 +55,10 @@ There is also a debug flag available that can be added to any command :
 $ readme-manager [...] --debug
 # Will print more information to console and save all logs to the log file (instead of only errors by default)
 ```
+
+## Example
+You can check out the current templates I use for my project (including this very readme) [over here](https://code.eutychia.org/kay/readme-templates).
+
 ## Templating
 When you bootstrap the templates forlder, 3 examples files will be create for you :
 - README.template.md: this is the base file that gets used when rendering your readme. You can await stuff in it. **This is the only required file**
