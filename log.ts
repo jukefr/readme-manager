@@ -4,6 +4,23 @@ import {
   setup,
 } from "https://deno.land/std@0.146.0/log/mod.ts";
 
+/**
+ * Setup different loggers used by the application.
+ * The default one hides debugs and detailed error messages.
+ * The debug one shows everything.
+ * The file error one is used in default mode to write error details to file but hide them in console.
+ *
+ * ```ts
+ * import { getLogger } from "https://deno.land/std@0.146.0/log/mod.ts"
+ * import { setupLogs } from "./logs.ts"
+ * await setupLogs('/path/to/logfile.log')
+ * const default = getLogger()
+ * const debug = getLogger('debug')
+ * const fileError = getLogger('fileError')
+ * ```
+ *
+ * @param {string} appLogFile The path the app should log to.
+ */
 export const setupLogs = async (appLogFile: string) => {
   await setup({
     handlers: {
@@ -34,7 +51,21 @@ export const setupLogs = async (appLogFile: string) => {
   });
 };
 
-export const error = (appLogFile: string, debug?: boolean) =>
+/**
+ * Error handler.
+ * Used log information to console and write to file then exit app.
+ *
+ * ```ts
+ * import { error } from "./log.ts"
+ * const errorHandler = error("/path/to/logfile.log", true)
+ * errorHandler('Something went wrong.', new Error('The error'))
+ * ```
+ *
+ * @param {string} appLogFile The path the app should log to.
+ * @param {boolean} cliMode Determines whever the errorHandler should exit or throw.
+ * @param {boolean} debug Show more information be shown to console if true.
+ */
+export const error = (appLogFile: string, cliMode?: boolean, debug?: boolean) =>
   (
     message: string,
     error?: Error,
@@ -52,5 +83,6 @@ export const error = (appLogFile: string, debug?: boolean) =>
       }
       defaultLogger.error(`Details logged to ${appLogFile}.`);
     }
-    Deno.exit(1);
+    cliMode && Deno.exit(1);
+    throw error ? error : new Error(message);
   };

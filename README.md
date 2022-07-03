@@ -1,8 +1,5 @@
-
-
 # [readme-manager](https://code.eutychia.org/kay/readme-manager)
 helps manage and harmonise READMEs in many repositories with template files available on [deno.land/x/readme_manager](https://deno.land/x/readme_manager)
-
 
 Define a template directory and write a README template for your
 project then compile it into a proper README.
@@ -107,7 +104,6 @@ Here is what mine looks like:
 ~/.deno/bin/readme-manager
 git add -u
 ```
-
 
 
 ## Development

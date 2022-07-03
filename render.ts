@@ -11,6 +11,21 @@ import {
 
 import { getBranch, getCommit, getRepository, getTag } from "./git.ts";
 
+/**
+ * Template rendering function.
+ * Uses Eta under the hood.
+ *
+ * ```ts
+ * import { render } from "./render.ts"
+ * const output = await render("/path/to/.README.template.md", "/path/to/", "# my-project", "/path/to/templates/", (errorMsg: string, error: Error) => {})
+ * ```
+ *
+ * @param {string} readmeFilePath The path of the readme we want to compile.
+ * @param {string} readmeDirectoryPath The directory where the readme resides.
+ * @param {string} readmeTemplate The contents of the readme we are compiling.
+ * @param {string} templatesPath The directory where the templates used for rendering are.
+ * @param {function(string, Error)} error Handler for errors.
+ */
 export const render = async (
   readmeFilePath: string,
   readmeDirectoryPath: string,

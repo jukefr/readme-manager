@@ -16,14 +16,20 @@ import { render } from "./render.ts";
 
 const appName = "readme-manager";
 
-export const mod = async (args: Args) => {
+/**
+ * The main readme-manager module.
+ *
+ * @param {Args} args The parsed Deno.args.
+ * @param {boolean} cliMode
+ */
+export const mod = async (args: Args, cliMode?: boolean) => {
   const appLogFile = getAppLogFile(appName);
   await setupLogs(appLogFile);
   const logger = getLogger(args.debug && "debug");
   if (args.debug) {
     logger.debug(`Logs will be appended to ${appLogFile}`);
   }
-  const errorHandler = error(appLogFile, args.debug);
+  const errorHandler = error(appLogFile, cliMode, args.debug);
 
   const appConfigFile = getAppConfigFile(appName, errorHandler);
   logger.info(`App config file will be ${appConfigFile}`);
@@ -37,6 +43,7 @@ export const mod = async (args: Args) => {
       logger,
       errorHandler,
       appConfigDirectory,
+      cliMode,
     );
   }
 
@@ -57,6 +64,7 @@ export const mod = async (args: Args) => {
         logger,
         errorHandler,
         appConfigDirectory,
+        cliMode,
       );
     }
 
@@ -74,6 +82,7 @@ export const mod = async (args: Args) => {
           logger,
           errorHandler,
           appConfigDirectory,
+          cliMode,
         );
       }
 
@@ -98,6 +107,7 @@ export const mod = async (args: Args) => {
             logger,
             errorHandler,
             appConfigDirectory,
+            cliMode,
           ),
         );
       }
@@ -164,14 +174,21 @@ export const mod = async (args: Args) => {
   }
 };
 
+/**
+ * Cli running mode
+ *
+ * @param {string[]} args The Deno.args array
+ * @returns {Promise<void | string | undefined>}
+ */
 export const bin = (args: string[]): Promise<void | string | undefined> => {
   const parsedArgs = parse(args);
 
   if (parsedArgs.help) {
-    return help();
+    help.map((msg) => console.log(msg));
+    Deno.exit(0);
   }
 
-  return mod(parsedArgs);
+  return mod(parsedArgs, true);
 };
 
 await bin(Deno.args);

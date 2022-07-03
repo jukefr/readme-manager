@@ -3,12 +3,31 @@ import { Logger } from "https://deno.land/std@0.146.0/log/mod.ts";
 import { checkExists } from "./utils.ts";
 import { bootstrap } from "./bootstrap.ts";
 
+/**
+ * Setup logic.
+ * Will create a configuration file with the prompted information.
+ * Will also run the template bootstrapping logic.
+ *
+ * ```ts
+ * import { getLogger } from "https://deno.land/std@0.146.0/log/mod.ts";
+ * import { setup } from "./setup.ts"
+ * await setup("readme-manager", "/path/to/readme-manager.json", getLogger(), (errorMsg: string, error?: Error) => {}, "/path/to/readme-templates")
+ * ```
+ *
+ * @param {string} appName The name of the current app.
+ * @param {string} appConfigFile The path where the configuration should be stored.
+ * @param {Logger} _logger The logger instance.
+ * @param {function(string, Error)} error Error handler function.
+ * @param {string} appConfigDirectory The path where the templates will be stored.
+ * @param {boolean} cliMode If set to true will ask for user inputs otherwise uses defaults from params.
+ */
 export const setup = async (
   appName: string,
   appConfigFile: string,
-  logger: Logger,
+  _logger: Logger,
   error: (message: string, error?: Error) => void,
   appConfigDirectory: string,
+  cliMode?: boolean,
 ) => {
   if (await checkExists(appConfigFile, error)) {
     console.log(
@@ -29,20 +48,26 @@ export const setup = async (
   }
 
   console.log();
-  const templateDirectory = prompt(
-    "Where should templates be fetched from?",
-    appConfigDirectory,
-  ) as string;
+  let templateDirectory = appConfigDirectory;
+  if (cliMode) {
+    templateDirectory = prompt(
+      "Where should templates be fetched from?",
+      appConfigDirectory,
+    ) as string;
+  }
 
   if (!await checkExists(templateDirectory, error)) {
     await bootstrap(templateDirectory, error);
   }
 
   console.log();
-  const filenameMatch = prompt(
-    "What readme template filename are we looking for inside repositories?",
-    ".README.template.md",
-  );
+  let filenameMatch = ".README.template.md";
+  if (cliMode) {
+    filenameMatch = prompt(
+      "What readme template filename are we looking for inside repositories?",
+      filenameMatch,
+    ) as string;
+  }
 
   const value = { templates: templateDirectory, match: filenameMatch };
   console.log();
@@ -50,8 +75,10 @@ export const setup = async (
     `The following configuration will be written to ${appConfigFile}:`,
   );
   console.log(JSON.stringify(value, null, 2));
-  const go = confirm("Does this look good ?");
-  if (!go) Deno.exit(1);
+  if (cliMode) {
+    const go = confirm("Does this look good ?");
+    if (!go) Deno.exit(1);
+  }
 
   await Deno.writeTextFile(appConfigFile, JSON.stringify(value));
   console.log("Configuration written, setup complete.");
