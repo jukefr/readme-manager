@@ -1,3 +1,15 @@
+# [2.5.0](https://code.eutychia.org/kay/readme-manager/compare/v2.4.0...v2.5.0) (2022-07-03)
+
+
+### Bug Fixes
+
+* doc escape [skip ci] ([91f5ab8](https://code.eutychia.org/kay/readme-manager/commit/91f5ab8c1b6edead7c2b965c15edaa014dcb576a))
+
+
+### Features
+
+* Add docs and tests ([ad3c4fb](https://code.eutychia.org/kay/readme-manager/commit/ad3c4fbfffc22b5dc8b7c7b47dcc88b566d404d2))
+
 # [2.4.0](https://code.eutychia.org/kay/readme-manager/compare/v2.3.1...v2.4.0) (2022-07-02)
 
 
