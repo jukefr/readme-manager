@@ -6,7 +6,7 @@ project then compile it into a proper README.
 
 ## Installation
 ```bash
-$ deno install --name readme-manager --reload --allow-all https://deno.land/x/readme_manager/mod.ts
+$ deno install --name readme-manager --reload --allow-all https://deno.land/x/readme_manager/cli.ts
 ```
 
 ## Usage
