@@ -1,3 +1,10 @@
+# [2.6.0](https://code.eutychia.org/kay/readme-manager/compare/v2.5.0...v2.6.0) (2022-07-03)
+
+
+### Features
+
+* Try to have the docs show up ([dea013b](https://code.eutychia.org/kay/readme-manager/commit/dea013b28a257cda629f2e09b34edac1044a511b))
+
 # [2.5.0](https://code.eutychia.org/kay/readme-manager/compare/v2.4.0...v2.5.0) (2022-07-03)
 
 
