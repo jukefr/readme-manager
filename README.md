@@ -105,6 +105,9 @@ Here is what mine looks like:
 git add -u
 ```
 
+## Documentation
+Documentation view is currently disabled for third party modules on deno.land/x but you can still view the auto generated docs on [doc.deno.land](https://doc.deno.land/https://deno.land/x/readme_manager)
+
 
 ## Development
 
