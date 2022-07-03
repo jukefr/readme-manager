@@ -1,3 +1,10 @@
+## [2.6.1](https://code.eutychia.org/kay/readme-manager/compare/v2.6.0...v2.6.1) (2022-07-03)
+
+
+### Bug Fixes
+
+* Auto generated docs link ([278e133](https://code.eutychia.org/kay/readme-manager/commit/278e1333b67fc669f89ac056a9b6a5cc60534cce))
+
 # [2.6.0](https://code.eutychia.org/kay/readme-manager/compare/v2.5.0...v2.6.0) (2022-07-03)
 
 
