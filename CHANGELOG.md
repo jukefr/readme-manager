@@ -1,3 +1,10 @@
+# [2.8.0](https://code.eutychia.org/kay/readme-manager/compare/v2.7.0...v2.8.0) (2022-07-04)
+
+
+### Features
+
+* ig tahts breaking actually mb ([5d96d48](https://code.eutychia.org/kay/readme-manager/commit/5d96d482b8c6d78fea9e3f77bff3d5fb564f0104))
+
 # [2.7.0](https://code.eutychia.org/kay/readme-manager/compare/v2.6.1...v2.7.0) (2022-07-04)
 
 
