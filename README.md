@@ -57,7 +57,7 @@ $ readme-manager [...] --debug
 ```
 
 ## Example
-You can check out the current templates I use for my project (including this very readme) [over here](https://code.eutychia.org/kay/readme-templates).
+You can check out the current templates I use for my project (including this readme) [over here](https://code.eutychia.org/kay/readme-templates).
 
 ## Templating
 When you bootstrap the templates forlder, 3 examples files will be create for you :
@@ -67,7 +67,7 @@ When you bootstrap the templates forlder, 3 examples files will be create for yo
 
 Feel free to adjust, remove or add any files you might want. Simply keep in mind that `README.template.md` is required and will be the base for rendering.
 
-Any file in the templates folder will be automatically required and available by its filename with `include`.
+Any file in the templates folder will be automatically required and available by its filename with `await include(filename)`.
 
 Any file that starts with `.` will be ignored.
 
@@ -84,7 +84,7 @@ The following variables are available to the template (on `it`):
 
 You can use javascript inside the templates and also async templates for data fetching (see Eta docs)
 
-Awaits are only supported at the top level `README.template.md`.
+**Make sure to `await` any includes you do !** As templates are compiled in async mode for await support (even if you are not using it).
 
 ## Templating docs
 The templating engine use is https://deno.land/x/eta@v1.12.3.
@@ -107,6 +107,7 @@ git add -u
 
 ## Documentation
 Documentation view is currently disabled for third party modules on deno.land/x but you can still view the auto generated docs on [doc.deno.land](https://doc.deno.land/https://deno.land/x/readme_manager)
+
 
 
 ## Development

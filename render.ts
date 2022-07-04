@@ -43,6 +43,7 @@ export const render = async (
         template.name,
         compile(
           await Deno.readTextFile(resolve(join(templatesPath, template.name))),
+          { async: true },
         ),
       );
     }

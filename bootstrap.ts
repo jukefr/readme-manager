@@ -7,7 +7,7 @@ import { checkExists } from "./utils.ts";
  * Base template used to include other.
  * Allow javascript and async function calls.
  */
-export const readme = `<%~ include("HEADER.template.md", {...it}) %>
+export const readme = `<%~ await include("HEADER.template.md", {...it}) %>
 
 <% it.javascripted = 13 + 12 %>
 
@@ -19,7 +19,7 @@ export const readme = `<%~ include("HEADER.template.md", {...it}) %>
 
 <%= it.readme %>
 
-<%~ include("FOOTER.template.md", {...it}) %>`;
+<%~ await include("FOOTER.template.md", {...it}) %>`;
 
 /**
  * Example header template.
@@ -35,6 +35,8 @@ hello world
  */
 export const footer = `---
 made with k by love
+
+<%= await fetch("https://jsonplaceholder.typicode.com/todos/2").then(r => r.json()).then(r => JSON.stringify(r)) %>
 `;
 
 /**
