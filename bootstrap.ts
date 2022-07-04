@@ -15,8 +15,6 @@ export const readme = `<%~ await include("HEADER.template.md", {...it}) %>
 
 <% it.asyncJavascripted = await fetch("https://jsonplaceholder.typicode.com/todos/1").then(r => r.json()) %>
 
-<%= it.asyncJavascripted.title %>
-
 <%= it.readme %>
 
 <%~ await include("FOOTER.template.md", {...it}) %>`;
@@ -26,7 +24,7 @@ export const readme = `<%~ await include("HEADER.template.md", {...it}) %>
  */
 export const header = `# <%= it.name %>
 
-hello world
+hello <%= it.asyncJavascripted.title %>
 ---
 `;
 
