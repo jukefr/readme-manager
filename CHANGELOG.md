@@ -1,3 +1,10 @@
+# [2.7.0](https://code.eutychia.org/kay/readme-manager/compare/v2.6.1...v2.7.0) (2022-07-04)
+
+
+### Features
+
+* Nested template async support ([857c0fa](https://code.eutychia.org/kay/readme-manager/commit/857c0fae57f55857b174a6b55858dc663a590fbb))
+
 ## [2.6.1](https://code.eutychia.org/kay/readme-manager/compare/v2.6.0...v2.6.1) (2022-07-03)
 
 
