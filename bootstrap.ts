@@ -24,7 +24,7 @@ export const readme = `<%~ await include("HEADER.template.md", {...it}) %>
  */
 export const header = `# <%= it.name %>
 
-hello <%= it.asyncJavascripted.title %>
+<%= it.asyncJavascripted.title %>
 ---
 `;
 
