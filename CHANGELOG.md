@@ -1,3 +1,15 @@
+# [3.0.0](https://code.eutychia.org/kay/readme-manager/compare/v2.8.0...v3.0.0) (2022-07-04)
+
+
+### Features
+
+* oops ([97bfabd](https://code.eutychia.org/kay/readme-manager/commit/97bfabd58f56e5ea2fc76178a0027ef446092292))
+
+
+### BREAKING CHANGES
+
+* include requires await
+
 # [2.8.0](https://code.eutychia.org/kay/readme-manager/compare/v2.7.0...v2.8.0) (2022-07-04)
 
 
